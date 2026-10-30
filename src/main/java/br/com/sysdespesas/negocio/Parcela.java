@@ -12,22 +12,22 @@ import java.time.LocalDate;
  */
 public class Parcela {
    
-    private String descricao;
+    private int idDespesa;
     private double valor;
     private boolean status;
     private LocalDate vencimento;
     private LocalDate dtPagamento;
 
-    public Parcela(String descricao, double valor, LocalDate vencimento) {
-        this.descricao = descricao;
+    public Parcela(int idDespesa, double valor, LocalDate vencimento) {
+        this.idDespesa = idDespesa;
         this.valor = valor;
         this.vencimento = vencimento;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public int getIdDespesa() {
+        return idDespesa;
     }
-    
+
     public double getValor() {
         return valor;
     }
@@ -62,7 +62,7 @@ public class Parcela {
     
     @Override
     public String toString(){
-        return "" + this.getDescricao() + " | " + this.getVencimento() + " | " + this.getValor();
+        return "" + this.getIdDespesa() + " | " + this.getVencimento() + " | " + this.getValor();
     }
     
 }

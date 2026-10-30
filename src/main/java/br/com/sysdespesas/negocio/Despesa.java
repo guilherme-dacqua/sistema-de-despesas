@@ -7,6 +7,7 @@ package br.com.sysdespesas.negocio;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,9 +15,9 @@ import java.time.Month;
  */
 public class Despesa {
 
-  //private int id
+    private int id;
     private String descricao;
-    private Parcela parcela;
+    private ArrayList<Parcela> parcelas;
 
     public Despesa(String descricao, double valorParcela, LocalDate vencimento, int qntParcelas) {
         this.descricao = descricao;
@@ -24,7 +25,7 @@ public class Despesa {
     }
 
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -33,12 +34,18 @@ public class Despesa {
     
     private void criarParcelas(String descricao, double valorParcela, LocalDate vencimento, int qntParcelas){
         
+        this.parcelas = new ArrayList<>();
+        
         for(int i = 1; i <= qntParcelas; i++){
-            parcela = new Parcela(this.descricao, valorParcela, vencimento);
+            var parcela = new Parcela(this.id, valorParcela, vencimento);
+            this.parcelas.add(parcela);
             vencimento = vencimento.plusMonths(1);
-            System.out.println(this.parcela);
-            // daoParcela.create(parcela);
+//          -> daoParcela.create(parcela);
         }
+    }
+    
+    public ArrayList<Parcela> getParcela(){
+        return this.parcelas;
     }
         
 }
