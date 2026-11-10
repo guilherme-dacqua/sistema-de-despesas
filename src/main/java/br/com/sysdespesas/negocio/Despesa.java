@@ -19,7 +19,7 @@ public class Despesa {
     private String descricao;
     private ArrayList<Parcela> parcelas;
 
-    public Despesa(String descricao, double valorParcela, LocalDate vencimento, int qntParcelas) {
+    public Despesa(String descricao, double valorParcela, String vencimento, int qntParcelas) {
         this.descricao = descricao;
         this.criarParcelas(descricao, valorParcela, vencimento, qntParcelas);
     }
@@ -32,9 +32,10 @@ public class Despesa {
         this.descricao = descricao;
     }
     
-    private void criarParcelas(String descricao, double valorParcela, LocalDate vencimento, int qntParcelas){
+    private void criarParcelas(String descricao, double valorParcela, String vencimento_, int qntParcelas){
         
         this.parcelas = new ArrayList<>();
+        LocalDate vencimento = this.conversor(vencimento_);
         
         for(int i = 1; i <= qntParcelas; i++){
             var parcela = new Parcela(this.id, valorParcela, vencimento);
@@ -46,6 +47,17 @@ public class Despesa {
     
     public ArrayList<Parcela> getParcela(){
         return this.parcelas;
+    }
+    
+    private LocalDate conversor(String data /*yyyy/MM/dd*/){
+        String[] data_ = new String[3];
+        data_ = data.split("-");
+        
+        int year  = Integer.parseInt(data_[0]);
+        int month = Integer.parseInt(data_[1]);
+        int day   = Integer.parseInt(data_[2]);
+        
+        return LocalDate.of(year, month, day);
     }
         
 }
