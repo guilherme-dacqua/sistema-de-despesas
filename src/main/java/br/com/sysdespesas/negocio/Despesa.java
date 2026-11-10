@@ -4,6 +4,8 @@
  */
 package br.com.sysdespesas.negocio;
 
+import br.com.sysdespesas.persistencia.DaoDespesa;
+import br.com.sysdespesas.persistencia.DaoParcela;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Month;
@@ -20,10 +22,21 @@ public class Despesa {
     private ArrayList<Parcela> parcelas;
 
     public Despesa(String descricao, double valorParcela, String vencimento, int qntParcelas) {
+        this.id = getProxId();
         this.descricao = descricao;
         this.criarParcelas(descricao, valorParcela, vencimento, qntParcelas);
     }
+    
+    public Despesa(int id, String descricao, ArrayList<Parcela> parcelas) {
+        this.id = id;
+        this.descricao = descricao;
+        this.parcelas = parcelas;
+    }
 
+    public int getId(){
+        return this.id;
+    }
+    
     public String getDescricao() {
         return this.descricao;
     }
@@ -58,6 +71,33 @@ public class Despesa {
         int day   = Integer.parseInt(data_[2]);
         
         return LocalDate.of(year, month, day);
+    }
+    
+    private static int getProxId(){
+        int num = 0;
+        ArrayList<Despesa> despesas = new DaoDespesa().readAll();
+                
+        if(!despesas.isEmpty()){
+            int aux = 0;
+            for(int i = 0; i < despesas.size(); i++){
+                aux = despesas.get(i).getId();
+                if(aux > num){ num = aux; }
+            }
+            num++;
+        }
+        
+        return num;
+    }
+    
+    public boolean equals(Object object){
+        boolean status = false;
+        var despesa = (Despesa) object;
+        
+        if(this.getId() == despesa.getId()){
+            status = true;
+        }
+        
+        return status;
     }
         
 }
