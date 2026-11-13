@@ -11,7 +11,7 @@ public class DaoParcela {
     private Persistencia arquivo;
     
     public DaoParcela(){
-        this.arquivo = new Persistencia("teste.txt");
+        this.arquivo = new Persistencia("parcelas.txt");
     }
     
     public ArrayList<Parcela> readAll(){

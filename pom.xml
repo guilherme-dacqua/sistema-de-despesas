@@ -11,6 +11,11 @@
             <artifactId>Ferramentas</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>br.univates</groupId>
+            <artifactId>Barsa</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

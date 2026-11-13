@@ -17,6 +17,7 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -29,16 +30,26 @@ public class TelaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        mCad = new javax.swing.JMenu();
+        mCadDespesa = new javax.swing.JMenuItem();
+        mCon = new javax.swing.JMenu();
+        mPag = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Cadastro");
-        jMenuBar1.add(jMenu1);
+        mCad.setText("Cadastros");
 
-        jMenu2.setText("Consulta");
-        jMenuBar1.add(jMenu2);
+        mCadDespesa.setText("Despesa");
+        mCadDespesa.addActionListener(this::mCadDespesaActionPerformed);
+        mCad.add(mCadDespesa);
+
+        jMenuBar1.add(mCad);
+
+        mCon.setText("Consultas");
+        jMenuBar1.add(mCon);
+
+        mPag.setText("Pagamentos");
+        jMenuBar1.add(mPag);
 
         setJMenuBar(jMenuBar1);
 
@@ -46,15 +57,22 @@ public class TelaInicial extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 657, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 479, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mCadDespesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCadDespesaActionPerformed
+        
+        var telaCadDespesa = new TelaCadDespesa();
+        telaCadDespesa.setVisible(true);
+        
+    }//GEN-LAST:event_mCadDespesaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -82,8 +100,10 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu mCad;
+    private javax.swing.JMenuItem mCadDespesa;
+    private javax.swing.JMenu mCon;
+    private javax.swing.JMenu mPag;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,11 +4,9 @@
 
 package br.com.sysdespesas;
 
-import br.com.sysdespesas.negocio.Parcela;
-import br.com.sysdespesas.persistencia.DaoParcela;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import br.com.sysdespesas.apresentacao.TelaInicial;
+import br.com.sysdespesas.negocio.Despesa;
+import br.com.sysdespesas.persistencia.DaoDespesa;
 
 /**
  *
@@ -18,9 +16,8 @@ public class SysDespesas {
 
     public static void main(String[] args) {
         
-        Parcela parcela = new Parcela(3, 25.50, "2026-11-13", "1969-09-22");
-        var dao = new DaoParcela();
-        dao.create(parcela);
-        
+        var tela = new TelaInicial();
+        tela.setVisible(true);
+
     }
 }

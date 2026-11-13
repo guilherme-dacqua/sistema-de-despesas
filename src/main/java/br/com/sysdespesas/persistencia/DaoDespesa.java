@@ -23,7 +23,7 @@ public class DaoDespesa {
             String linha = "";
             while(linha != null){
                 linha = this.arquivo.ler();
-                if(linha != null){
+                if(linha != null && !linha.isEmpty()){
                     
                     String[] dados = new String[3];
                     dados = linha.split(";");
@@ -67,13 +67,12 @@ public class DaoDespesa {
                     
                     int id                      = despesa_.getId();
                     String descricao            = despesa_.getDescricao();
-                    ArrayList<Parcela> parcelas = new DaoParcela().read(id);
-                    
+                    ArrayList<Parcela> parcelas = despesa_.getParcela();
                     String linha = "";
-                    for (Parcela parcela : parcelas) {
-                        linha += id + ";" + descricao + ";" + parcela.getIdParcela() + "\n";
+                    for(int j = 0; j < parcelas.size(); j++) {
+                        linha += id + ";" + descricao + ";" + parcelas.get(j).getIdParcela();
+                        if(j != parcelas.size() - 1){ linha += "\n"; }
                     }
-                    
                     this.arquivo.escrever(linha);
                 }
             this.arquivo.fecharEscrita();

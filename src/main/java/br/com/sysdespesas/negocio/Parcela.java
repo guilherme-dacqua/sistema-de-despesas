@@ -11,7 +11,7 @@ public final class Parcela {
     private double valor;
     private boolean status; // 0 -> não pago, 1 -> pago
     private LocalDate vencimento;
-    private LocalDate dtPagamento;
+    private LocalDate dtPagamento = stringToLocalDate("1969-12-01");
     
     public Parcela(int idDespesa, double valor, LocalDate vencimento, int idParcela) {
         this.idDespesa = idDespesa;

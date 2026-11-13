@@ -49,12 +49,13 @@ public class Despesa {
         
         this.parcelas = new ArrayList<>();
         LocalDate vencimento = this.conversor(vencimento_);
+        var dao = new DaoParcela();
         
         for(int i = 1; i <= qntParcelas; i++){
             var parcela = new Parcela(this.id, valorParcela, vencimento);
+            dao.create(parcela);
             this.parcelas.add(parcela);
             vencimento = vencimento.plusMonths(1);
-//          -> daoParcela.create(parcela);
         }
     }
     
